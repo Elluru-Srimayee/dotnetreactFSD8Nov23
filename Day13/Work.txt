@@ -1,0 +1,317 @@
+Create the GitHub Repository for your projects. Please add my Id to the collaborator
+Do commit every week in to the repo by Gayathri Mahadevan
+Gayathri Mahadevan
+02:47 pm
+Do commit every week in to the repo
+git remote add origin https://github.com/Elluru-Srimayee/dotnetreactFSD8Nov23
+
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using Shopping_App.Interfaces;
+using Shopping_App.Models.DTOs;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+
+namespace Shopping_App.Services
+{
+    public class TokenService : ITokenService
+    {
+        private readonly SymmetricSecurityKey _key;
+
+        public TokenService(IConfiguration configuration)
+        {
+            var secretKey = configuration["SecretKey"].ToString();
+            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
+        }
+        public string GetToken(UserDTO user)
+        {
+            var claims = new List<Claim>()
+            {
+                new Claim(JwtRegisteredClaimNames.NameId,user.Username),
+                new Claim("role",user.Role)
+            };
+            var cred = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
+            var tokenDescription = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.Now.AddDays(1),
+                SigningCredentials = cred
+            };
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var token = tokenHandler.CreateToken(tokenDescription);
+            return tokenHandler.WriteToken(token);
+
+        }
+
+    }
+}
+
+
+using Shopping_App.Models;
+using System.ComponentModel.DataAnnotations;
+
+namespace Shopping_App.Models
+{
+    public class Product
+    {
+        public int Id { get; set; }//identity - GUID
+        [Required(ErrorMessage = "Name of the product cannot be empty")]
+        public string Name { get; set; }
+        [Range(1, 1000, ErrorMessage = "Price of thr product should be within 1 to 1000")]
+        public float Price { get; set; }
+        [Range(1, 100, ErrorMessage = "Quantity has to be minimum 1 and maximum 100")]
+        public int Quantity { get; set; }
+        public string? Picture { get; set; }
+        public ICollection<CartItems>? CartItems { get; set; }
+    }
+}
+
+namespace Shopping_App.Exceptions
+{
+    public class NoProductsAvailableException : Exception
+    {
+        string message;
+        public NoProductsAvailableException()
+        {
+            message = "No products are available for sale";
+        }
+        public override string Message => message;
+    }
+}
+
+appsettings.json:
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "ConnectionStrings": {
+    "shoppingCon": "Data source=DESKTOP-313G9P3\\DEMOINSTANCE;user id=sa;password=Thanusha@4;Initial catalog=dbShopping06Nov2023"
+  },
+  "SecretKey": "this is my Secret key",
+  "AllowedHosts": "*"
+}
+
+
+using Shopping_App.Interfaces;
+using Shopping_App.Models.DTOs;
+using Shopping_App.Models;
+using Shopping_App.Repositories;
+using System.Security.Cryptography;
+using System.Text;
+
+namespace Shopping_App.Services
+{
+    public class UserService : IUserService
+    {
+        private readonly IRepository<string, User> _repository;
+        private readonly ITokenService _tokenService;
+
+        public UserService(IRepository<string, User> repository, ITokenService tokenService)
+        {
+            _repository = repository;
+            _tokenService = tokenService;
+        }
+        public UserDTO Login(UserDTO userDTO)
+        {
+            var user = _repository.GetById(userDTO.Username);
+            if (user != null)
+            {
+                HMACSHA512 hmac = new HMACSHA512(user.Key);
+                var userpass = hmac.ComputeHash(Encoding.UTF8.GetBytes(userDTO.Password));
+                for (int i = 0; i < userpass.Length; i++)
+                {
+                    if (user.Password[i] != userpass[i])
+                        return null;
+                }
+                userDTO.Token = _tokenService.GetToken(userDTO);
+                userDTO.Password = "";
+                return userDTO;
+            }
+            return null;
+        }
+
+        public UserDTO Register(UserDTO userDTO)
+        {
+            HMACSHA512 hmac = new HMACSHA512();
+            User user = new User()
+            {
+                Username = userDTO.Username,
+                Password = hmac.ComputeHash(Encoding.UTF8.GetBytes(userDTO.Password)),
+                Key = hmac.Key,
+                Role = userDTO.Role
+            };
+            var result = _repository.Add(user);
+            if (result != null)
+            {
+                userDTO.Password = "";
+                return userDTO;
+            }
+            return null;
+
+        }
+    }
+}
+
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Shopping_App.Contexts;
+using Shopping_App.Interfaces;
+using Shopping_App.Models;
+using Shopping_App.Repositories;
+using Shopping_App.Services;
+using System.Text;
+
+namespace ShoppingApp
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
+
+            // Add services to the container.
+            builder.Services.AddControllersWithViews();
+
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["SecretKey"])),
+                        ValidateIssuerSigningKey = true
+                    };
+                });
+
+            builder.Services.AddDbContext<ShoppingContext>(opts =>
+            {
+                opts.UseSqlServer(builder.Configuration.GetConnectionString("shoppingCon"));
+            });
+
+            builder.Services.AddScoped<IRepository<string, User>, UserRepository>();
+            builder.Services.AddScoped<IRepository<int, Product>, ProductRepository>();
+            builder.Services.AddScoped<IRepository<int, Cart>, CartRepository>();
+            builder.Services.AddScoped<IRepository<int, CartItems>, CartItemsRepository>();
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<ITokenService, TokenService>();
+            builder.Services.AddScoped<IProductService, ProductService>();
+            var app = builder.Build();
+
+            // Configure the HTTP request pipeline.
+            if (!app.Environment.IsDevelopment())
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
+            app.UseStaticFiles();
+
+            app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            app.Run();
+        }
+    }
+}
+
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Shopping_App.Exceptions;
+using Shopping_App.Interfaces;
+using Shopping_App.Models;
+
+namespace Shopping_App.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ProductController : ControllerBase
+    {
+        private readonly IProductService _productService;
+
+        public ProductController(IProductService productService)
+        {
+            _productService = productService;
+        }
+        [Authorize]
+        [HttpGet]
+        public ActionResult Get()
+        {
+            string errorMessage = string.Empty;
+            try
+            {
+                var result = _productService.GetProducts();
+                return Ok(result);
+            }
+            catch (NoProductsAvailableException e)
+            {
+                errorMessage = e.Message;
+            }
+            return BadRequest(errorMessage);
+        }
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public ActionResult Create(Product product)
+        {
+            string errorMessage = string.Empty;
+            try
+            {
+                var result = _productService.Add(product);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                errorMessage = e.Message;
+            }
+            return BadRequest(errorMessage);
+        }
+    }
+}
+
+
+using Shopping_App.Exceptions;
+using Shopping_App.Interfaces;
+using Shopping_App.Models;
+
+namespace Shopping_App.Services
+{
+    public class ProductService : IProductService
+    {
+        private readonly IRepository<int, Product> _productRepository;
+
+        public ProductService(IRepository<int, Product> repository)
+        {
+            _productRepository = repository;
+        }
+        public Product Add(Product product)
+        {
+            if (product.Price > 5)
+            {
+                var result = _productRepository.Add(product);
+                return result;
+            }
+            return null;
+        }
+
+
+        public List<Product> GetProducts()
+        {
+            var products = _productRepository.GetAll();
+            if (products != null)
+            {
+                return products.ToList();
+            }
+            throw new NoProductsAvailableException();
+        }
+    }
+}
