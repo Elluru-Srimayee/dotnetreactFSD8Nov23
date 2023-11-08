@@ -1,0 +1,14 @@
+F:\Hexaware Training\Git Training\1st day notes\ShoppingSolution\SolidApp\bin\Debug\net6.0\SolidApp.exe
+F:\Hexaware Training\Git Training\1st day notes\ShoppingSolution\SolidApp\bin\Debug\net6.0\SolidApp.deps.json
+F:\Hexaware Training\Git Training\1st day notes\ShoppingSolution\SolidApp\bin\Debug\net6.0\SolidApp.runtimeconfig.json
+F:\Hexaware Training\Git Training\1st day notes\ShoppingSolution\SolidApp\bin\Debug\net6.0\SolidApp.dll
+F:\Hexaware Training\Git Training\1st day notes\ShoppingSolution\SolidApp\bin\Debug\net6.0\SolidApp.pdb
+F:\Hexaware Training\Git Training\1st day notes\ShoppingSolution\SolidApp\obj\Debug\net6.0\SolidApp.GeneratedMSBuildEditorConfig.editorconfig
+F:\Hexaware Training\Git Training\1st day notes\ShoppingSolution\SolidApp\obj\Debug\net6.0\SolidApp.AssemblyInfoInputs.cache
+F:\Hexaware Training\Git Training\1st day notes\ShoppingSolution\SolidApp\obj\Debug\net6.0\SolidApp.AssemblyInfo.cs
+F:\Hexaware Training\Git Training\1st day notes\ShoppingSolution\SolidApp\obj\Debug\net6.0\SolidApp.csproj.CoreCompileInputs.cache
+F:\Hexaware Training\Git Training\1st day notes\ShoppingSolution\SolidApp\obj\Debug\net6.0\SolidApp.dll
+F:\Hexaware Training\Git Training\1st day notes\ShoppingSolution\SolidApp\obj\Debug\net6.0\refint\SolidApp.dll
+F:\Hexaware Training\Git Training\1st day notes\ShoppingSolution\SolidApp\obj\Debug\net6.0\SolidApp.pdb
+F:\Hexaware Training\Git Training\1st day notes\ShoppingSolution\SolidApp\obj\Debug\net6.0\SolidApp.genruntimeconfig.cache
+F:\Hexaware Training\Git Training\1st day notes\ShoppingSolution\SolidApp\obj\Debug\net6.0\ref\SolidApp.dll
