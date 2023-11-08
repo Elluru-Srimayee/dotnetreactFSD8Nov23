@@ -1,0 +1,17 @@
+Design patterns
+Creational
+Structural
+Behavioral
+
+Design Pattern:
+https://dotnettutorials.net/course/dot-net-design-patterns/
+
+Examples of Creational Design Patterns are Singleton, Factory, Builder, 
+Prototype, Fluent Interface, Factory Method, and Abstract Factory.
+
+Examples of Structural Design Patterns are Adapter, Facade, Decorator, 
+Composite, Proxy, Flyweight, and Bridge Design Patterns.
+
+Behavioral Design Patterns include Chain of Responsibility, Command, 
+ Observer, Iterator, State, Template Method, Visitor, Strategy, 
+Mediator, Memento, and Interpreter Design Pattern.
