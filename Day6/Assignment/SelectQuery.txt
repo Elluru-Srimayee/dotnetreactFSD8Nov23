@@ -1,0 +1,181 @@
+1) Print all the titles names
+
+SELECT Title FROM Titles;
+
+2) Print all the titles that have been published by 1389
+
+SELECT Title FROM Titles WHERE pub_id = 1389;
+
+3) Print the books that have price in rangeof 10 to 15
+
+SELECT Title FROM Titles WHERE Price BETWEEN 10 AND 15;
+
+4) Print those books that have no price
+
+SELECT Title as book FROM Titles WHERE Price IS NULL;
+
+5) Print the book names that strat with 'The'
+
+SELECT Title FROM Titles WHERE title like 'The%';
+
+6) Print the book names that do not have 'v' in their name
+
+SELECT Title FROM Titles WHERE Title NOT LIKE '%v%';
+
+7) print the books sorted by the royalty
+
+SELECT Title as Books FROM Titles ORDER BY Royalty DESC;
+
+8) print the books sorted by publisher in descending then by types in asending then by price in descending
+
+SELECT Title FROM Titles
+ORDER BY Publisher DESC, Type, Price DESC;
+
+9) Print the average price of books in every type
+
+SELECT Type, AVG(Price) AS AveragePrice
+FROM Titles
+GROUP BY Type;
+
+10) print all the types in uniques
+
+SELECT DISTINCT Type FROM Titles;
+
+11) Print the first 2 costliest books
+
+SELECT Top(2)title, Price
+FROM Titles
+ORDER BY Price DESC;
+
+12) Print books that are of type business and have price less than 
+20 which also have advance greater than 7000
+
+SELECT Title
+FROM Titles
+WHERE Type = 'business' AND Price < 20 AND Advance > 7000;
+
+13) Select those publisher id and number of books which have price between 15 to 25 and have 'It' in its name. Print only those which have count greater than 2. Also sort the result in ascending order of count
+
+SELECT PublisherID, COUNT(*) AS BookCount
+FROM Titles
+WHERE Price BETWEEN 15 AND 25 AND Title LIKE '%It%'
+GROUP BY PublisherID
+HAVING BookCount > 2
+ORDER BY BookCount;
+
+14) Print the Authors who are from 'CA'
+
+SELECT AuthorName
+FROM Authors
+WHERE State = 'CA';
+
+15) Print the count of authors from every state
+
+SELECT State, COUNT(*) AS AuthorCount
+FROM Authors
+GROUP BY State;
+
+------------------------------------------------------------------------------------
+Set 2
+-------------------------------------------------------------------------------------
+1) Print the storeid and number of orders for the store
+
+SELECT stor_id, COUNT(qty) AS NumberOfOrders
+FROM sales
+GROUP BY stor_id;
+
+2) print the numebr of orders for every title
+
+select title_id,Count(qty) as NumberOfOrders from sales group by title_id;
+
+3) print the publisher name and book name
+
+select pub_name as 'Publisher_Name', title as 'Book Name' 
+from publishers inner join titles 
+on publishers.pub_id=titles.pub_id;
+
+4) Print the author full name for al the authors
+
+select concat(au_fname,' ',au_lname) as 'Full Name' from authors;
+
+5) Print the price of every book with tax (price+price*12.36/100)
+
+SELECT title, price, price + (price * 12.36 / 100) AS PriceWithTax
+FROM titles;
+
+6) Print the author name, title name
+
+SELECT concat(authors.au_fname,' ',authors.au_lname) AS author_name, titles.title AS title_name
+FROM authors
+JOIN titleauthor ON authors.au_id = titleauthor.au_id
+JOIN titles ON titleauthor.title_id = titles.title_id;
+
+7) print the author name, title name and the publisher name
+
+SELECT concat(authors.au_fname,' ',authors.au_lname) AS author_name, titles.title AS title_name, publishers.pub_name AS publisher_name
+FROM authors
+JOIN titleauthor ON authors.au_id = titleauthor.au_id
+JOIN titles ON titleauthor.title_id = titles.title_id
+JOIN publishers ON titles.pub_id = publishers.pub_id;
+
+8) Print the average price of books pulished by every publicher
+
+SELECT p.pub_name AS publisher_name, AVG(t.price) AS average_price
+FROM publishers p
+JOIN titles t ON p.pub_id = t.pub_id
+GROUP BY p.pub_name;
+
+9) print the books published by 'Marjorie'
+
+SELECT t.title AS book_title
+FROM titles t
+JOIN publishers p ON t.pub_id = p.pub_id
+WHERE p.pub_name = 'Marjorie';
+
+10) Print the order numbers of books published by 'New Moon Books'
+
+SELECT s.ord_num
+FROM sales s
+WHERE s.title_id IN (
+    SELECT t.title_id
+    FROM titleauthor ta
+    JOIN titles t ON ta.title_id = t.title_id
+    JOIN publishers p ON t.pub_id = p.pub_id
+    WHERE p.pub_name = 'New Moon Books'
+);
+
+11) Print the number of orders for every publisher
+
+SELECT p.pub_name AS publisher_name, SUM(s.qty) AS total_orders
+FROM publishers p
+JOIN titles t ON p.pub_id = t.pub_id
+JOIN sales s ON t.title_id = s.title_id
+GROUP BY p.pub_name;
+
+12) print the order number , book name, quantity, price and the total price for all orders
+
+SELECT s.ord_num AS order_number, t.title AS book_name, s.qty AS quantity, t.price AS price, s.qty * t.price AS total_price
+FROM sales s
+JOIN titles t ON s.title_id = t.title_id;
+
+13) print the total order quantity for every book
+
+SELECT t.title AS book_name, SUM(s.qty) AS total_order_quantity
+FROM titles t
+JOIN sales s ON t.title_id = s.title_id
+GROUP BY t.title;
+
+14) print the total ordervalue for every book
+
+SELECT t.title AS book_name, SUM(s.qty * t.price) AS total_order_value
+FROM titles t
+JOIN sales s ON t.title_id = s.title_id
+GROUP BY t.title;
+
+15) print the orders that are for the books published by the publisher for which 'Paolo' works for
+
+SELECT s.ord_num AS order_number, t.title AS book_name
+FROM sales s
+JOIN titles t ON s.title_id = t.title_id
+JOIN employee e ON t.pub_id = e.pub_id
+WHERE e.fname = 'Paolo';
