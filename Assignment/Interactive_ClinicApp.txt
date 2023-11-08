@@ -1,0 +1,318 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static List<Doctor> doctors = new List<Doctor>();
+    static List<Appointment> appointments = new List<Appointment>();
+    static int doctorEmployeeIdCounter = 1;
+    static bool isAdmin = false;
+
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Welcome to the Clinic Management System!");
+
+        while (true)
+        {
+            Console.Write("Are you Admin or user? ");
+            string input = Console.ReadLine().ToUpper();
+
+            if (input == "ADMIN")
+            {
+                isAdmin = true;
+                AdminMenu();
+            }
+            else if (input == "USER")
+            {
+                isAdmin = false;
+                UserMenu();
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter 'Y' for Admin or 'N' for User.");
+            }
+        }
+    }
+
+    static void AdminMenu()
+    {
+        while (true)
+        {
+            Console.WriteLine("Admin Menu:");
+            Console.WriteLine("1. Add Doctor");
+            Console.WriteLine("2. Add Doctor's Specification");
+            Console.WriteLine("3. Modify Doctor Phone");
+            Console.WriteLine("4. Modify Doctor Experience");
+            Console.WriteLine("5. Delete Doctor");
+            Console.WriteLine("6. View Doctors");
+            Console.WriteLine("7. Change Mode");
+            Console.WriteLine("8. Exit");
+
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    AddDoctor();
+                    break;
+                case "2":
+                    AddDoctorSpecification();
+                    break;
+                case "3":
+                    ModifyDoctor("Phone");
+                    break;
+                case "4":
+                    ModifyDoctor("Experience");
+                    break;
+                case "5":
+                    DeleteDoctor();
+                    break;
+                case "6":
+                    ViewDoctors();
+                    break;
+                case "7":
+                    ChangeMode();
+                    break;
+                case "8":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice. Please try again.");
+                    break;
+            }
+        }
+    }
+
+    static void UserMenu()
+    {
+        while (true)
+        {
+            Console.WriteLine("User Menu:");
+            Console.WriteLine("1. View Doctors");
+            Console.WriteLine("2. Check for Doctors by Specification");
+            Console.WriteLine("3. Book Appointment");
+            Console.WriteLine("4. Change Mode");
+            Console.WriteLine("5. Exit");
+
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    ViewDoctors();
+                    break;
+                case "2":
+                    CheckDoctorsBySpecification();
+                    break;
+                case "3":
+                    BookAppointment();
+                    break;
+                case "4":
+                    ChangeMode();
+                    break;
+                case "5":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice. Please try again.");
+                    break;
+            }
+        }
+    }
+    static int GetNextId()
+    {
+    if (doctors.Count == 0)
+        return 1;
+    int id = doctors[doctors.Count - 1].EmployeeId;
+    return ++id;
+    }
+
+    static void AddDoctor()
+    {
+        Console.Write("Enter Doctor Name: ");
+        string name = Console.ReadLine();
+        Console.Write("Enter Doctor Phone: ");
+        string phone = Console.ReadLine();
+        Console.Write("Enter Doctor Experience: ");
+        string experience = Console.ReadLine();
+
+        Doctor doctor = new Doctor(name, phone, experience);
+        doctor.EmployeeId = GetNextId();
+        doctors.Add(doctor);
+
+        Console.WriteLine("Doctor added successfully with Employee ID: " + doctor.EmployeeId);
+    }
+
+    static void AddDoctorSpecification()
+    {
+        Console.Write("Enter Doctor's Employee ID: ");
+        int employeeId = int.Parse(Console.ReadLine());
+        Doctor doctor = FindDoctorByEmployeeId(employeeId);
+
+        if (doctor != null)
+        {
+            Console.Write("Enter Doctor's Specification: ");
+            string specification = Console.ReadLine();
+            doctor.AddSpecification(specification);
+
+            Console.WriteLine("Doctor's specification added successfully.");
+        }
+        else
+        {
+            Console.WriteLine("Doctor not found with the given Employee ID.");
+        }
+    }
+
+    static void ModifyDoctor(string infoType)
+    {
+        Console.Write("Enter the Doctor's Employee ID: ");
+        int employeeId = int.Parse(Console.ReadLine());
+        Doctor doctor = FindDoctorByEmployeeId(employeeId);
+
+        if (doctor != null)
+        {
+            Console.Write($"Enter the new {infoType}: ");
+            string newValue = Console.ReadLine();
+
+            if (infoType == "Phone")
+            {
+                doctor.Phone = newValue;
+            }
+            else if (infoType == "Experience")
+            {
+                doctor.Experience = newValue;
+            }
+
+            Console.WriteLine($"{infoType} modified successfully.");
+        }
+        else
+        {
+            Console.WriteLine("Doctor not found with the given Employee ID.");
+        }
+    }
+
+    static void DeleteDoctor()
+    {
+        Console.Write("Enter the Doctor's Employee ID: ");
+        int employeeId = int.Parse(Console.ReadLine());
+        Doctor doctor = FindDoctorByEmployeeId(employeeId);
+
+        if (doctor != null)
+        {
+            doctors.Remove(doctor);
+            Console.WriteLine("Doctor deleted successfully.");
+        }
+        else
+        {
+            Console.WriteLine("Doctor not found with the given Employee ID.");
+        }
+    }
+
+    static void ViewDoctors()
+    {
+        Console.WriteLine("List of Doctors:");
+        foreach (var doctor in doctors)
+        {
+            Console.WriteLine($"Employee ID: {doctor.EmployeeId}, Name: {doctor.Name}, Phone: {doctor.Phone}, Experience: {doctor.Experience}, Specifications: {string.Join(", ", doctor.Specifications)}");
+        }
+    }
+
+    static void CheckDoctorsBySpecification()
+    {
+        Console.Write("Enter the desired specification: ");
+        string specification = Console.ReadLine();
+        var matchingDoctors = doctors.Where(d => d.Specifications.Contains(specification)).ToList();
+
+        if (matchingDoctors.Count > 0)
+        {
+            Console.WriteLine("Doctors with the specified specification:");
+            foreach (var doctor in matchingDoctors)
+            {
+                Console.WriteLine($"Employee ID: {doctor.EmployeeId}, Name: {doctor.Name}, Phone: {doctor.Phone}, Experience: {doctor.Experience}");
+            }
+        }
+        else
+        {
+            Console.WriteLine("No doctors found with the specified specification.");
+        }
+    }
+    static Doctor FindDoctorByEmployeeId(int employeeId)
+    {
+        return doctors.FirstOrDefault(d => d.EmployeeId == employeeId);
+    }
+
+
+static void BookAppointment()
+    {
+        Console.Write("Enter the Doctor's Employee ID for the appointment: ");
+        int employeeId = int.Parse(Console.ReadLine());
+        Doctor doctor = FindDoctorByEmployeeId(employeeId);
+
+        if (doctor != null)
+        {
+            Console.Write("Enter your Name: ");
+            string patientName = Console.ReadLine();
+
+            appointments.Add(new Appointment(doctor, patientName));
+            Console.WriteLine("Appointment booked successfully.");
+        }
+        else
+        {
+            Console.WriteLine("Doctor not found with the given Employee ID.");
+        }
+    }
+    static void ChangeMode()
+    {
+        Console.Write("Change the mode (Admin or User): ");
+        string newMode = Console.ReadLine().ToUpper();
+
+        if (newMode == "ADMIN")
+        {
+            isAdmin = true;
+            AdminMenu();
+        }
+        else if (newMode == "USER")
+        {
+            isAdmin = false;
+            UserMenu();
+        }
+        else
+        {
+            Console.WriteLine("Invalid mode. Please enter 'Admin' or 'User'.");
+            ChangeMode();
+        }
+    }
+}
+class Doctor
+{
+    public int EmployeeId { get; set; }
+    public string Name { get; set; }
+    public string Phone { get; set; }
+    public string Experience { get; set; }
+    public List<string> Specifications { get; set; }
+
+    public Doctor(string name, string phone, string experience)
+    {
+        Name = name;
+        Phone = phone;
+        Experience = experience;
+        Specifications = new List<string>();
+    }
+
+    public void AddSpecification(string specification)
+    {
+        Specifications.Add(specification);
+    }
+}
+
+class Appointment
+{
+    public Doctor Doctor { get; set; }
+    public string PatientName { get; set; }
+
+    public Appointment(Doctor doctor, string patientName)
+    {
+        Doctor = doctor;
+        PatientName = patientName;
+    }
+}
