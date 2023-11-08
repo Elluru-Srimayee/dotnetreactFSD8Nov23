@@ -1,0 +1,19 @@
+Git
+  Local repository
+Versioning tool
+
+git init
+
+git add -A
+
+git status
+
+git commit -m "<Initial Commit>"
+
+git remote add origin <url> 
+
+git remote -v 
+
+git push origin master
+
+git pull --rebase origin main

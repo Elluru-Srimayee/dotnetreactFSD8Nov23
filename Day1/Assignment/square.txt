@@ -1,0 +1,30 @@
+namespace SecondApp
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int num;
+            Console.WriteLine("Please enter a number to get its square");
+            num = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine($"The square of {num} is: {num*num}");
+        }
+    }
+}
+
+
+                                                   OR
+namespace SecondApp
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int num,square;
+            Console.WriteLine("Please enter a number to get its square");
+            num = Convert.ToInt32(Console.ReadLine()); 
+            square = num * num ;
+            Console.WriteLine($"The square of {num} is: {square}");
+        }
+    }
+}

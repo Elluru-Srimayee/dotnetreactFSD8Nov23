@@ -1,0 +1,14 @@
+F:\Hexaware Training\Git Training\1st day notes\FirstSolution\FirstApp\bin\Debug\net6.0\FirstApp.exe
+F:\Hexaware Training\Git Training\1st day notes\FirstSolution\FirstApp\bin\Debug\net6.0\FirstApp.deps.json
+F:\Hexaware Training\Git Training\1st day notes\FirstSolution\FirstApp\bin\Debug\net6.0\FirstApp.runtimeconfig.json
+F:\Hexaware Training\Git Training\1st day notes\FirstSolution\FirstApp\bin\Debug\net6.0\FirstApp.dll
+F:\Hexaware Training\Git Training\1st day notes\FirstSolution\FirstApp\bin\Debug\net6.0\FirstApp.pdb
+F:\Hexaware Training\Git Training\1st day notes\FirstSolution\FirstApp\obj\Debug\net6.0\FirstApp.GeneratedMSBuildEditorConfig.editorconfig
+F:\Hexaware Training\Git Training\1st day notes\FirstSolution\FirstApp\obj\Debug\net6.0\FirstApp.AssemblyInfoInputs.cache
+F:\Hexaware Training\Git Training\1st day notes\FirstSolution\FirstApp\obj\Debug\net6.0\FirstApp.AssemblyInfo.cs
+F:\Hexaware Training\Git Training\1st day notes\FirstSolution\FirstApp\obj\Debug\net6.0\FirstApp.csproj.CoreCompileInputs.cache
+F:\Hexaware Training\Git Training\1st day notes\FirstSolution\FirstApp\obj\Debug\net6.0\FirstApp.dll
+F:\Hexaware Training\Git Training\1st day notes\FirstSolution\FirstApp\obj\Debug\net6.0\refint\FirstApp.dll
+F:\Hexaware Training\Git Training\1st day notes\FirstSolution\FirstApp\obj\Debug\net6.0\FirstApp.pdb
+F:\Hexaware Training\Git Training\1st day notes\FirstSolution\FirstApp\obj\Debug\net6.0\FirstApp.genruntimeconfig.cache
+F:\Hexaware Training\Git Training\1st day notes\FirstSolution\FirstApp\obj\Debug\net6.0\ref\FirstApp.dll
