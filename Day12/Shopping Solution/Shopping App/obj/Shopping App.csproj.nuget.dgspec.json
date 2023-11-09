@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Hexaware Training\\ASPNet\\Day12\\Shopping Solution\\Shopping App\\Shopping App.csproj": {}
+    "F:\\Hexaware Training\\Day12\\Shopping Solution\\Shopping App\\Shopping App.csproj": {}
   },
   "projects": {
-    "F:\\Hexaware Training\\ASPNet\\Day12\\Shopping Solution\\Shopping App\\Shopping App.csproj": {
+    "F:\\Hexaware Training\\Day12\\Shopping Solution\\Shopping App\\Shopping App.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Hexaware Training\\ASPNet\\Day12\\Shopping Solution\\Shopping App\\Shopping App.csproj",
+        "projectUniqueName": "F:\\Hexaware Training\\Day12\\Shopping Solution\\Shopping App\\Shopping App.csproj",
         "projectName": "Shopping App",
-        "projectPath": "F:\\Hexaware Training\\ASPNet\\Day12\\Shopping Solution\\Shopping App\\Shopping App.csproj",
+        "projectPath": "F:\\Hexaware Training\\Day12\\Shopping Solution\\Shopping App\\Shopping App.csproj",
         "packagesPath": "C:\\Users\\LEOVO\\.nuget\\packages\\",
-        "outputPath": "F:\\Hexaware Training\\ASPNet\\Day12\\Shopping Solution\\Shopping App\\obj\\",
+        "outputPath": "F:\\Hexaware Training\\Day12\\Shopping Solution\\Shopping App\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\LEOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",

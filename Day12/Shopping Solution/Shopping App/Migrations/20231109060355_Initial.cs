@@ -18,7 +18,7 @@ namespace Shopping_App.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<float>(type: "real", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    Picture = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Picture = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -46,15 +46,14 @@ namespace Shopping_App.Migrations
                     CartNumber = table.Column<int>(type: "int", nullable: false),
                     Product_Id = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<float>(type: "real", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: false)
+                    Quantity = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CartItems", x => new { x.CartNumber, x.Product_Id });
                     table.ForeignKey(
-                        name: "FK_CartItems_Products_ProductId",
-                        column: x => x.ProductId,
+                        name: "FK_CartItems_Products_Product_Id",
+                        column: x => x.Product_Id,
                         principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -80,9 +79,9 @@ namespace Shopping_App.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CartItems_ProductId",
+                name: "IX_CartItems_Product_Id",
                 table: "CartItems",
-                column: "ProductId");
+                column: "Product_Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Carts_Username",

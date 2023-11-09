@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "o39WvvqWyLBZunjddHMKJOh0cvta1deZ6Xy4nxMy5zHFjyfj7b2D0Ad3Et9OuncXC1nXcsK5boLXePNI+RAyVQ==",
+  "dgSpecHash": "kN1nvwGJ0tiOjzJrMWxwGy1U3m7MZ/t7aeDkpygjFNYWDxan+X9JyEHi2p4g2fZbaC0WuJ4o4131xTRSBov0fg==",
   "success": true,
-  "projectFilePath": "F:\\Hexaware Training\\ASPNet\\Day12\\Shopping Solution\\Shopping App\\Shopping App.csproj",
+  "projectFilePath": "F:\\Hexaware Training\\Day12\\Shopping Solution\\Shopping App\\Shopping App.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LEOVO\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\LEOVO\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

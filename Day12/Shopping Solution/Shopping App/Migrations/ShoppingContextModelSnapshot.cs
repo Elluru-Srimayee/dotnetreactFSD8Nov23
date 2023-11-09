@@ -52,15 +52,12 @@ namespace Shopping_App.Migrations
                     b.Property<float>("Price")
                         .HasColumnType("real");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
                     b.HasKey("CartNumber", "Product_Id");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("Product_Id");
 
                     b.ToTable("CartItems");
                 });
@@ -78,7 +75,6 @@ namespace Shopping_App.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Picture")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("Price")
@@ -129,7 +125,7 @@ namespace Shopping_App.Migrations
                 {
                     b.HasOne("Shopping_App.Models.Product", "Product")
                         .WithMany("CartItems")
-                        .HasForeignKey("ProductId")
+                        .HasForeignKey("Product_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
