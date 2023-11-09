@@ -1,0 +1,184 @@
+{
+  "format": 1,
+  "restore": {
+    "F:\\Hexaware Training\\Git Training\\1st day notes\\3TierClinicApp\\3TierClinic\\3TierClinic.csproj": {}
+  },
+  "projects": {
+    "F:\\Hexaware Training\\Git Training\\1st day notes\\3TierClinicApp\\3TierClinic\\3TierClinic.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Hexaware Training\\Git Training\\1st day notes\\3TierClinicApp\\3TierClinic\\3TierClinic.csproj",
+        "projectName": "3TierClinic",
+        "projectPath": "F:\\Hexaware Training\\Git Training\\1st day notes\\3TierClinicApp\\3TierClinic\\3TierClinic.csproj",
+        "packagesPath": "C:\\Users\\LEOVO\\.nuget\\packages\\",
+        "outputPath": "F:\\Hexaware Training\\Git Training\\1st day notes\\3TierClinicApp\\3TierClinic\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\LEOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "F:\\Hexaware Training\\Git Training\\1st day notes\\3TierClinicApp\\ClinicDALLibrary\\ClinicDALLibrary.csproj": {
+                "projectPath": "F:\\Hexaware Training\\Git Training\\1st day notes\\3TierClinicApp\\ClinicDALLibrary\\ClinicDALLibrary.csproj"
+              },
+              "F:\\Hexaware Training\\Git Training\\1st day notes\\3TierClinicApp\\ClinicModelLibrary\\ClinicModelLibrary.csproj": {
+                "projectPath": "F:\\Hexaware Training\\Git Training\\1st day notes\\3TierClinicApp\\ClinicModelLibrary\\ClinicModelLibrary.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\Hexaware Training\\Git Training\\1st day notes\\3TierClinicApp\\ClinicDALLibrary\\ClinicDALLibrary.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Hexaware Training\\Git Training\\1st day notes\\3TierClinicApp\\ClinicDALLibrary\\ClinicDALLibrary.csproj",
+        "projectName": "ClinicDALLibrary",
+        "projectPath": "F:\\Hexaware Training\\Git Training\\1st day notes\\3TierClinicApp\\ClinicDALLibrary\\ClinicDALLibrary.csproj",
+        "packagesPath": "C:\\Users\\LEOVO\\.nuget\\packages\\",
+        "outputPath": "F:\\Hexaware Training\\Git Training\\1st day notes\\3TierClinicApp\\ClinicDALLibrary\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\LEOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "F:\\Hexaware Training\\Git Training\\1st day notes\\3TierClinicApp\\ClinicModelLibrary\\ClinicModelLibrary.csproj": {
+                "projectPath": "F:\\Hexaware Training\\Git Training\\1st day notes\\3TierClinicApp\\ClinicModelLibrary\\ClinicModelLibrary.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\Hexaware Training\\Git Training\\1st day notes\\3TierClinicApp\\ClinicModelLibrary\\ClinicModelLibrary.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Hexaware Training\\Git Training\\1st day notes\\3TierClinicApp\\ClinicModelLibrary\\ClinicModelLibrary.csproj",
+        "projectName": "ClinicModelLibrary",
+        "projectPath": "F:\\Hexaware Training\\Git Training\\1st day notes\\3TierClinicApp\\ClinicModelLibrary\\ClinicModelLibrary.csproj",
+        "packagesPath": "C:\\Users\\LEOVO\\.nuget\\packages\\",
+        "outputPath": "F:\\Hexaware Training\\Git Training\\1st day notes\\3TierClinicApp\\ClinicModelLibrary\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\LEOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

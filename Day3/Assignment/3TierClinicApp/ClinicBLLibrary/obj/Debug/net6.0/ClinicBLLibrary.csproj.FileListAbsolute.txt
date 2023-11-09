@@ -1,0 +1,17 @@
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicBLLibrary\bin\Debug\net6.0\ClinicBLLibrary.deps.json
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicBLLibrary\bin\Debug\net6.0\ClinicBLLibrary.dll
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicBLLibrary\bin\Debug\net6.0\ClinicBLLibrary.pdb
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicBLLibrary\bin\Debug\net6.0\ClinicDALLibrary.dll
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicBLLibrary\bin\Debug\net6.0\ClinicModelLibrary.dll
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicBLLibrary\bin\Debug\net6.0\ClinicDALLibrary.pdb
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicBLLibrary\bin\Debug\net6.0\ClinicModelLibrary.pdb
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicBLLibrary\obj\Debug\net6.0\ClinicBLLibrary.csproj.AssemblyReference.cache
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicBLLibrary\obj\Debug\net6.0\ClinicBLLibrary.GeneratedMSBuildEditorConfig.editorconfig
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicBLLibrary\obj\Debug\net6.0\ClinicBLLibrary.AssemblyInfoInputs.cache
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicBLLibrary\obj\Debug\net6.0\ClinicBLLibrary.AssemblyInfo.cs
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicBLLibrary\obj\Debug\net6.0\ClinicBLLibrary.csproj.CoreCompileInputs.cache
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicBLLibrary\obj\Debug\net6.0\ClinicBLLibrary.csproj.CopyComplete
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicBLLibrary\obj\Debug\net6.0\ClinicBLLibrary.dll
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicBLLibrary\obj\Debug\net6.0\refint\ClinicBLLibrary.dll
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicBLLibrary\obj\Debug\net6.0\ClinicBLLibrary.pdb
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicBLLibrary\obj\Debug\net6.0\ref\ClinicBLLibrary.dll

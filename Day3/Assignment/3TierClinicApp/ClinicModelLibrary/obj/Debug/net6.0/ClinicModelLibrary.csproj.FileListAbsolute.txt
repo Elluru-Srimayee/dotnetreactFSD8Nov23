@@ -1,0 +1,11 @@
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicModelLibrary\bin\Debug\net6.0\ClinicModelLibrary.deps.json
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicModelLibrary\bin\Debug\net6.0\ClinicModelLibrary.dll
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicModelLibrary\bin\Debug\net6.0\ClinicModelLibrary.pdb
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicModelLibrary\obj\Debug\net6.0\ClinicModelLibrary.GeneratedMSBuildEditorConfig.editorconfig
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicModelLibrary\obj\Debug\net6.0\ClinicModelLibrary.AssemblyInfoInputs.cache
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicModelLibrary\obj\Debug\net6.0\ClinicModelLibrary.AssemblyInfo.cs
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicModelLibrary\obj\Debug\net6.0\ClinicModelLibrary.csproj.CoreCompileInputs.cache
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicModelLibrary\obj\Debug\net6.0\ClinicModelLibrary.dll
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicModelLibrary\obj\Debug\net6.0\refint\ClinicModelLibrary.dll
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicModelLibrary\obj\Debug\net6.0\ClinicModelLibrary.pdb
+F:\Hexaware Training\Git Training\1st day notes\3TierClinicApp\ClinicModelLibrary\obj\Debug\net6.0\ref\ClinicModelLibrary.dll

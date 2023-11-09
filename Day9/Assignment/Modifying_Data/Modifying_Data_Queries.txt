@@ -1,0 +1,33 @@
+1.INSERT INTO cd.facilities (facid, name, membercost, guestcost, initialoutlay, monthlymaintenance)
+VALUES (9, 'Spa', 20, 30, 100000, 800);
+
+2.INSERT INTO cd.facilities (facid, name, membercost, guestcost, initialoutlay, monthlymaintenance)
+VALUES
+  (9, 'Spa', 20, 30, 100000, 800),
+  (10, 'Squash Court 2', 3.5, 17.5, 5000, 80);
+
+3.					  
+insert into cd.facilities
+    (facid, name, membercost, guestcost, initialoutlay, monthlymaintenance)
+    select (select max(facid) from cd.facilities)+1, 'Spa', 20, 30, 100000, 800;  
+
+4.UPDATE cd.facilities
+SET initialoutlay = 10000
+WHERE facid = 1;
+
+5.UPDATE cd.facilities
+SET membercost = 6, guestcost = 30
+WHERE name LIKE 'Tennis Court%';
+
+6.UPDATE cd.facilities AS f1
+SET membercost = membercost * 1.1, guestcost = guestcost * 1.1
+WHERE f1.name = 'Tennis Court 2';
+
+7.delete from cd.bookings;
+
+8.DELETE FROM cd.members
+WHERE memid = 37
+AND memid NOT IN (SELECT DISTINCT memid FROM cd.bookings);
+
+9.DELETE FROM cd.members
+WHERE memid NOT IN (SELECT DISTINCT memid FROM cd.bookings);

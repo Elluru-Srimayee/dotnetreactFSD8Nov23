@@ -1,0 +1,196 @@
+Question1
+Design the database for a shop which sells products
+Points for consideration
+  1) One product can be supplied by many suppliers
+  2) One supplier can supply many products
+  3) All customers details have to present
+  4) A customer can buy more than one product in every purchase
+  5) Bill for every purchase has to be stored
+  6) These are just details of one shop
+
+Note:- you do not have to store the shop details.
+
+Question2
+Case 1: A Simple Case on ER Modelling
+•	Goal – to demonstrate how to build an E-R model from a simple Statement of Objectives of a movie store. ( given very clearly in statement forms)
+Scenario:
+•	A video store rents movies to members.
+•	Each movie in the store has a title and is identified by a unique movie number.
+•	A movie can be in VHS, VCD, or DVD format.
+•	Each movie belongs to one of a given set of categories (action, adventure, comedy, ... )
+•	The store has a name and a (unique) phone number for each member.
+•	Each member may provide a favorite movie category (used for marketing purposes).
+•	There are two types of members: 
+o	Golden Members:
+o	Bronze Members:
+•	Using  their credit cards gold members can rent one or more movies and bronze members max. of one movie.  
+•	A member may have a number of dependents (with known names).
+•	Each dependent is allowed to rent one (1) movie at a time.
+ 
+
+
+Question3
+( A little more abstract case )
+Create an ER Diagram for a student registration system where the entities are Students, Instructors, Courses and Schedules. Consider all the possible pairings. (Given not in statements form, but in a summarized way)
+
+Assumptions:
+A student is taught by one or more Instructor
+A student joins only one course
+An Instructor  may teach any number of students
+An Instructor takes atleast one course
+A course will have only one schedule
+A course may have many students
+A course is taught by only one Instructor
+A schedule may be used for many courses 
+
+
+------------------------------------------------------------------
+
+Question1:
+----------
+Products Table:
+
+ProductID (Primary Key)
+ProductName
+Other product details (e.g., price, description, category, etc.)
+Suppliers Table:
+
+SupplierID (Primary Key)
+SupplierName
+Other supplier details (e.g., address, contact information, etc.)
+ProductSupplier Table (Many-to-Many Relationship):
+
+ProductID (Foreign Key referencing Products)
+SupplierID (Foreign Key referencing Suppliers)
+This table represents which suppliers supply which products.
+Customers Table:
+
+CustomerID (Primary Key)
+FirstName
+LastName
+Other customer details (e.g., address, contact information, etc.)
+Purchases Table:
+
+PurchaseID (Primary Key)
+CustomerID (Foreign Key referencing Customers)
+PurchaseDate
+Other purchase details (e.g., payment method, delivery details, etc.)
+PurchaseDetails Table (Many-to-Many Relationship):
+
+PurchaseDetailID (Primary Key)
+PurchaseID (Foreign Key referencing Purchases)
+ProductID (Foreign Key referencing Products)
+Quantity
+This table represents the products purchased in each transaction, along with the quantity.
+Bills Table:
+
+BillID (Primary Key)
+PurchaseID (Foreign Key referencing Purchases)
+TotalAmount
+Other bill details (e.g., taxes, discounts, etc.)
+
+=======================================================
+
+Question 2:
+-----------
+
+Movie:
+
+Attributes: MovieNumber (Primary Key), Title, Format, Category
+Member:
+
+Attributes: MemberID (Primary Key), Name, PhoneNumber, FavoriteCategory
+Subtype: GoldenMember (with the ability to rent multiple movies) and BronzeMember (with the ability to rent a single movie)
+CreditCard:
+
+Attributes: CardNumber (Primary Key), MemberID (Foreign Key)
+Dependent:
+
+Attributes: DependentID (Primary Key), Name, MemberID (Foreign Key)
+Relationships:
+
+Rents:
+
+Connects: Member to Movie
+Attributes: RentalDate (to track when a movie is rented)
+FavoriteCategoryOf:
+
+Connects: Member to Category
+This represents the "favorite movie category" provided by members for marketing purposes.
+BelongsTo:
+
+Connects: Movie to Category
+Represents the category to which a movie belongs.
+HasCreditCard:
+
+Connects: Member to CreditCard
+Represents the association between a member and their credit card.
+HasDependent:
+
+Connects: Member to Dependent
+Represents the association between a member and their dependents.
+Here's a textual representation of the entities, attributes, and relationships:
+
+Entities:
+
+Movie (MovieNumber, Title, Format, Category)
+Member (MemberID, Name, PhoneNumber, FavoriteCategory)
+Subtypes: GoldenMember, BronzeMember
+CreditCard (CardNumber, MemberID)
+Dependent (DependentID, Name, MemberID)
+Relationships:
+
+Rents (MemberID, MovieNumber, RentalDate)
+FavoriteCategoryOf (MemberID, Category)
+BelongsTo (MovieNumber, Category)
+HasCreditCard (MemberID, CardNumber)
+HasDependent (MemberID, DependentID)
+This ER model represents the relationships between movies, members, categories, credit cards, and dependents in the movie store. It allows you to track movie rentals, member preferences, and member relationships with their dependents.
+
+======================================================================
+
+Question 3:
+-----------
+
+Entities:
+
+Student:
+
+Attributes: StudentID (Primary Key), Name, other student-related attributes.
+Instructor:
+
+Attributes: InstructorID (Primary Key), Name, other instructor-related attributes.
+Course:
+
+Attributes: CourseID (Primary Key), Name, other course-related attributes.
+Schedule:
+
+Attributes: ScheduleID (Primary Key), Date, Time, other schedule-related attributes.
+Relationships:
+
+Teaches:
+
+Connects: Instructor to Student
+Represents the relationship between instructors and students.
+Cardinality: Many-to-Many (an instructor can teach multiple students, and a student can be taught by multiple instructors).
+Joins:
+
+Connects: Student to Course
+Represents the relationship between students and courses.
+Cardinality: One-to-One (each student joins one course).
+Takes:
+
+Connects: Instructor to Course
+Represents the relationship between instructors and courses.
+Cardinality: One-to-Many (an instructor may teach multiple courses, but each course is taught by one instructor).
+HasSchedule:
+
+Connects: Course to Schedule
+Represents the relationship between courses and schedules.
+Cardinality: Many-to-One (multiple courses can use the same schedule, but each course has one schedule).
+Enrolls:
+
+Connects: Course to Student
+Represents the enrollment of students in courses.
+Cardinality: Many-to-Many (a course may have many students, and a student can join multiple courses).
+
