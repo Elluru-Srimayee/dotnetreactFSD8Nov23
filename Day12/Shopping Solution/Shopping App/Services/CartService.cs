@@ -81,5 +81,18 @@ namespace Shopping_App.Services
                 .FirstOrDefault(ci => ci.CartNumber == cartNumber && ci.Product_Id == productId);
             return cartItem != null ? true : false;
         }
+        public bool RemoveFromCart(CartDTO cartDTO)
+        {
+            var cartCheck = _cartRepository.GetAll().FirstOrDefault(c => c.Username == cartDTO.Username);
+            int cartNumber = cartCheck.cartNumber;
+            bool CheckCartItem = CheckIfCartItemAlreadyPresent(cartNumber, cartDTO.ProductId);
+            if (CheckCartItem)
+            {
+                var result = _cartItemRepository.Delete(cartDTO.ProductId);
+                return true;
+
+            }
+            return false;
+        }
     }
 }

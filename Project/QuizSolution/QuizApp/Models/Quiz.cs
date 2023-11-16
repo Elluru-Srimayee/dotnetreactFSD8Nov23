@@ -12,13 +12,8 @@ namespace QuizApp.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public string Category { get;  set; }
-        public int? TimeLimit { get; set; }
-
-        [ForeignKey("CreatorId")]
+        public int? TimeLimit{ get; set; }
         public int? CreatorId{ get; set; }
-
-        public int? QuestionId { get; set; }
-        [ForeignKey("QuestionId")]
-       public ICollection<Questions>? Questions { get; set; }
+        public ICollection<Questions>? Questions { get; set; }
     }
 }

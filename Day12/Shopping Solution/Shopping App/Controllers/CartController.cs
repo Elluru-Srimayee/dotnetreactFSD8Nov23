@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Shopping_App.Interfaces;
 using Shopping_App.Models.DTOs;
 namespace Shopping_App.Controllers
@@ -13,7 +14,8 @@ namespace Shopping_App.Controllers
         {
             _cartService = cartService;
         }
-        [HttpPost]
+        [Authorize(Roles ="Admin")]
+        [HttpPost("add")]
         public IActionResult AddToCart(CartDTO cartDTO)
         {
             var result = _cartService.AddToCart(cartDTO);
@@ -21,6 +23,8 @@ namespace Shopping_App.Controllers
                 return Ok(cartDTO);
             return BadRequest("Could not add item to cart");
         }
+        [Authorize(Roles = "Admin")]
+        [HttpPost("Remove")]
         public IActionResult RemoveFromCart(CartDTO cartDTO)
         {
             var result = _cartService.RemoveFromCart(cartDTO);

@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QuizApp.Models;
-using System.Collections.Generic;
-using System.Reflection.Emit;
 
 namespace QuizApp.Contexts
 {
@@ -14,8 +12,24 @@ namespace QuizApp.Contexts
         public DbSet<User> Users { get; set; }
         public DbSet<Quiz> Quizs { get; set; }
         public DbSet<Questions> Questions { get; set; }
-        public DbSet<Option> Option { get; set; }
-        public DbSet<Category> Category { get; set; }
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Quiz>(quiz =>
+            {
+                quiz.HasKey(q => q.QuizId);
+            });
 
+            modelBuilder.Entity<Questions>(question =>
+            {
+                question.HasKey(q => q.QuestionId);
+            });
+
+            modelBuilder.Entity<Questions>(question =>
+            {
+                question.HasKey(q => q.QuestionId);
+            });
+        }
     }
+
 }

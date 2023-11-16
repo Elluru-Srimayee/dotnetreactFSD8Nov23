@@ -38,7 +38,7 @@ namespace Shopping_App.Controllers
 
             return BadRequest(message);
         }
-        [HttpGet("login")]
+        [HttpPost("login")]
         public ActionResult Login(UserDTO viewModel)
         {
             string message = "";

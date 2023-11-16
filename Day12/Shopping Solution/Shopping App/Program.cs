@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Shopping_App.Contexts;
 using Shopping_App.Interfaces;
 using Shopping_App.Models;
@@ -8,7 +9,8 @@ using Shopping_App.Repositories;
 using Shopping_App.Services;
 using System.Text;
 
-namespace ShoppingApp
+
+namespace Shopping_App
 {
     public class Program
     {
@@ -17,7 +19,37 @@ namespace ShoppingApp
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            //builder.Services.AddControllersWithViews();
+            builder.Services.AddControllers();
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen(opt =>
+            {
+                opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description = "JWT Authorization header using the Bearer scheme."
+                });
+
+                opt.AddSecurityRequirement(new OpenApiSecurityRequirement
+                 {
+                     {
+                           new OpenApiSecurityScheme
+                             {
+                                 Reference = new OpenApiReference
+                                 {
+                                     Type = ReferenceType.SecurityScheme,
+                                     Id = "Bearer"
+                                 }
+                             },
+                             new string[] {}
+
+                     }
+                 });
+            });
 
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -36,6 +68,8 @@ namespace ShoppingApp
                 opts.UseSqlServer(builder.Configuration.GetConnectionString("shoppingCon"));
             });
 
+            builder.Logging.AddLog4Net();
+
             builder.Services.AddScoped<IRepository<string, User>, UserRepository>();
             builder.Services.AddScoped<IRepository<int, Product>, ProductRepository>();
             builder.Services.AddScoped<IRepository<int, Cart>, CartRepository>();
@@ -47,9 +81,11 @@ namespace ShoppingApp
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (!app.Environment.IsDevelopment())
+            if (app.Environment.IsDevelopment())
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseSwagger();
+                app.UseSwaggerUI();
+                //app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
 
@@ -57,10 +93,10 @@ namespace ShoppingApp
 
             app.UseAuthentication();
             app.UseAuthorization();
-
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+            app.MapControllers();
+            //app.MapControllerRoute(
+            //    name: "default",
+            //    pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
         }

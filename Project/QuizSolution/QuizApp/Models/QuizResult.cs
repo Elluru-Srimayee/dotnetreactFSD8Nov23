@@ -6,12 +6,11 @@ namespace QuizApp.Models
     public class QuizResult
     {
         [Key]
-        public int ResultId { get; set; }
-        [ForeignKey("User")]
-        public string UserId { get; set; }
-        [ForeignKey("Quiz")]
-        public string QuizId { get; set; }
-        public int Score { get; set; }
-        public DateTime SubmissionTime { get; set; }
+        
+            public int Id { get; set; }
+            public int QuizId { get; set; }
+            public string Username { get; set; }
+            public int Score { get; set; }
+            public List<Feedback> Feedback { get; set; }
     }
 }

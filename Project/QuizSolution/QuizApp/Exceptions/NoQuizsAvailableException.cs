@@ -5,7 +5,7 @@
         string message;
         public NoQuizsAvailableException()
         {
-            message = "No products are available for sale";
+            message = "No Quizs are available To take";
         }
         public override string Message => message;
     }

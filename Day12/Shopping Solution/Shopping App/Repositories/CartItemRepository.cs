@@ -34,8 +34,6 @@ namespace Shopping_App.Repositories
 
         public IList<CartItems> GetAll()
         {
-            if (_context.CartItems.Count() == 0)
-                return null;
             return _context.CartItems.ToList();
         }
 

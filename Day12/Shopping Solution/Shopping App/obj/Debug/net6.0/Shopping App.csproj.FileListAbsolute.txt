@@ -498,3 +498,12 @@ F:\Hexaware Training\Day12\Shopping Solution\Shopping App\obj\Debug\net6.0\scope
 F:\Hexaware Training\Day12\Shopping Solution\Shopping App\obj\Debug\net6.0\Shopping App.csproj.CopyComplete
 F:\Hexaware Training\Day12\Shopping Solution\Shopping App\obj\Debug\net6.0\Shopping App.genruntimeconfig.cache
 F:\Hexaware Training\Day12\Shopping Solution\Shopping App\obj\Debug\net6.0\ref\Shopping App.dll
+F:\Hexaware Training\Day12\Shopping Solution\Shopping App\bin\Debug\net6.0\log4net.config
+F:\Hexaware Training\Day12\Shopping Solution\Shopping App\bin\Debug\net6.0\log4net.dll
+F:\Hexaware Training\Day12\Shopping Solution\Shopping App\bin\Debug\net6.0\Microsoft.Extensions.Logging.Log4Net.AspNetCore.dll
+F:\Hexaware Training\Day12\Shopping Solution\Shopping App\obj\Debug\net6.0\Shopping App.MvcApplicationPartsAssemblyInfo.cs
+F:\Hexaware Training\Day12\Shopping Solution\Shopping App\bin\Debug\net6.0\Microsoft.OpenApi.dll
+F:\Hexaware Training\Day12\Shopping Solution\Shopping App\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+F:\Hexaware Training\Day12\Shopping Solution\Shopping App\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+F:\Hexaware Training\Day12\Shopping Solution\Shopping App\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+F:\Hexaware Training\Day12\Shopping Solution\Shopping App\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
