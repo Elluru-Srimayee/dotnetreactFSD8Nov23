@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace QuizApp.Models
 {
@@ -13,7 +14,7 @@ namespace QuizApp.Models
         public string Description { get; set; }
         public string Category { get;  set; }
         public int? TimeLimit{ get; set; }
-        public int? CreatorId{ get; set; }
+        [JsonIgnore]
         public ICollection<Questions>? Questions { get; set; }
     }
 }

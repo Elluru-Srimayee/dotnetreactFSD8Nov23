@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace QuizApp.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,8 +18,7 @@ namespace QuizApp.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Category = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TimeLimit = table.Column<int>(type: "int", nullable: true),
-                    CreatorId = table.Column<int>(type: "int", nullable: true)
+                    TimeLimit = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -46,14 +45,14 @@ namespace QuizApp.Migrations
                 {
                     QuestionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Username = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    QuizId = table.Column<int>(type: "int", nullable: false),
                     QuestionTxt = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Option1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Option2 = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Option3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Option4 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Answer = table.Column<int>(type: "int", nullable: false)
+                    Answer = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    QuizId = table.Column<int>(type: "int", nullable: false),
+                    UserAnswer = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -64,23 +63,12 @@ namespace QuizApp.Migrations
                         principalTable: "Quizs",
                         principalColumn: "QuizId",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Questions_Users_Username",
-                        column: x => x.Username,
-                        principalTable: "Users",
-                        principalColumn: "Username",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Questions_QuizId",
                 table: "Questions",
                 column: "QuizId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Questions_Username",
-                table: "Questions",
-                column: "Username");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -89,10 +77,10 @@ namespace QuizApp.Migrations
                 name: "Questions");
 
             migrationBuilder.DropTable(
-                name: "Quizs");
+                name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Quizs");
         }
     }
 }

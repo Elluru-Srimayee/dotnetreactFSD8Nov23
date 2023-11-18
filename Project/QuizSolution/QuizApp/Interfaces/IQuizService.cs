@@ -6,5 +6,8 @@ namespace QuizApp.Interfaces
     {
         List<Quiz> GetQuizs();
         Quiz Add(Quiz quiz);
+        Quiz GetQuizById(int id);
+        Task<Quiz> GetQuizByIdWithQuestions(int id);
+        Task<List<Quiz>> GetQuizzesByCategoryAsync(string category);
     }
 }

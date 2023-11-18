@@ -1,4 +1,5 @@
-﻿using QuizApp.Models.DTOs;
+﻿using QuizApp.Models;
+using QuizApp.Models.DTOs;
 
 namespace QuizApp.Interfaces
 {
@@ -6,5 +7,7 @@ namespace QuizApp.Interfaces
     {
         bool AddToQuiz(QuestionDTO questionDTO);
         bool RemoveFromQuiz(QuestionDTO questionDTO);
+        IList<QuestionDTO> GetAllQuestions();
+        IList<Questions> GetQuestionsByQuizId(int quizId);
     }
 }
