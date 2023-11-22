@@ -1,0 +1,13 @@
+SPA:Single Page Application
+HTML+CSS+JavaScript+(AJAX(Asyncronous Java Script)+JQUERY)
+AngularJs- Java Script
+Angular-2 -> ES6->TypeScript(It compiles to become JavaScript, It is light weight)
+NodeJs->Server for Angular Application
+MEAN-> MongoDB+ExpressJs(API)+Angular(Frontend)+Node
+React ->(Very Light Weight)JavaScript/TypeScript
+MEAN->MongoDB+ExpressJs(API)+Angular(Frontend)+Node
+We are going to work with the following:
+Node->Server for front end 
+React ->FrontEnd
+ASP core WebAPI-> Back End -server IIS
+SQL Server->Database

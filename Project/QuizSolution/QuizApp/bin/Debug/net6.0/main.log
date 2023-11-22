@@ -6724,3 +6724,29 @@ System.InvalidOperationException: The AuthorizationPolicy named: 'Creator' was n
 2023-11-21 17:51:38,514 [9] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (256ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 SELECT [q].[QuestionId], [q].[Answer], [q].[Option1], [q].[Option2], [q].[Option3], [q].[Option4], [q].[QuestionTxt], [q].[QuizId], [q].[UserAnswer]
 FROM [Questions] AS [q]
+2023-11-22 15:05:25,423 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5057
+2023-11-22 15:05:28,685 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2023-11-22 15:05:28,786 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2023-11-22 15:05:28,790 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: F:\Hexaware Training\Project\QuizSolution\QuizApp\
+2023-11-22 15:07:17,459 [24] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'QuizContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-11-22 15:07:24,182 [24] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (565ms) [Parameters=[@__key_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [u].[Username], [u].[Key], [u].[Password], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Username] = @__key_0
+2023-11-22 15:07:55,888 [5] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'QuizContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-11-22 15:07:55,958 [5] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (29ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [q].[QuestionId], [q].[Answer], [q].[Option1], [q].[Option2], [q].[Option3], [q].[Option4], [q].[QuestionTxt], [q].[QuizId], [q].[UserAnswer]
+FROM [Questions] AS [q]
+2023-11-22 15:07:56,025 [5] INFO QuizApp.Controllers.QuestionsController.GetAllQuestions[79] - Got All the Questions successfully
+2023-11-22 15:08:15,370 [9] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'QuizContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-11-22 15:08:15,377 [9] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [q].[QuestionId], [q].[Answer], [q].[Option1], [q].[Option2], [q].[Option3], [q].[Option4], [q].[QuestionTxt], [q].[QuizId], [q].[UserAnswer]
+FROM [Questions] AS [q]
+2023-11-22 15:08:15,394 [9] INFO QuizApp.Controllers.QuestionsController.GetQuestionsByQuizId[100] - Got the QuestionsByQuizId successfully
+2023-11-22 15:18:28,592 [65] INFO Microsoft.EntityFrameworkCore.Infrastructure.?[?] - Entity Framework Core 6.0.24 initialized 'QuizContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.24' with options: None
+2023-11-22 15:18:29,007 [65] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (26ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Quizs] AS [q]
+2023-11-22 15:18:29,023 [65] INFO Microsoft.EntityFrameworkCore.Database.Command.?[?] - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [q].[QuizId], [q].[Category], [q].[Description], [q].[TimeLimit], [q].[Title]
+FROM [Quizs] AS [q]

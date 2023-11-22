@@ -14,12 +14,14 @@ namespace QuizApp.Controllers
     {
         private readonly IQuestionService _questionService;
         private readonly IQuizResultService _quizResultService;
+        private readonly ILogger _logger;
 
         // Constructor injection of services
-        public QuestionsController(IQuestionService questionService, IQuizResultService quizResultService)
+        public QuestionsController(IQuestionService questionService, ILogger<QuestionsController> logger, IQuizResultService quizResultService)
         {
             _questionService = questionService;
             _quizResultService = quizResultService;
+            _logger = logger;
         }
 
         // Endpoint to add a question to a quiz
@@ -34,13 +36,14 @@ namespace QuizApp.Controllers
                 var result = _questionService.AddToQuiz(questionDTO);
 
                 if (result)
+                    _logger.LogInformation("Added the quiz successfully");
                     return Ok(questionDTO); // Return success response
             }
             catch (Exception e)
             {
                 errorMessage = e.Message;
             }
-
+            _logger.LogError("Failed to add the quiz");
             return BadRequest(errorMessage); // Return error response
         }
 
@@ -53,11 +56,12 @@ namespace QuizApp.Controllers
             {
                 // Attempt to update the question
                 _questionService.UpdateQuestion(quizId, questionId, updatedQuestion);
-
+                _logger.LogInformation("Updated the QuizResults successfully");
                 return Ok($"Question with ID {questionId} in Quiz with ID {quizId} updated successfully.");
             }
             catch (Exception e)
             {
+                _logger.LogError("Failed to update the question");
                 return BadRequest($"Failed to update the question. {e.Message}");
             }
         }
@@ -72,14 +76,14 @@ namespace QuizApp.Controllers
             {
                 // Get all questions
                 var questions = _questionService.GetAllQuestions();
-
+                _logger.LogInformation("Got All the Questions successfully");
                 return Ok(questions); // Return the questions
             }
             catch (NoQuestionsAvailableException e)
             {
                 errorMessage = e.Message;
             }
-
+            _logger.LogInformation("Failed to get the questions");
             return BadRequest(errorMessage); // Return error response
         }
 
@@ -93,14 +97,14 @@ namespace QuizApp.Controllers
             {
                 // Get questions by quiz ID
                 var questions = _questionService.GetQuestionsByQuizId(quizId);
-
+                _logger.LogInformation("Got the QuestionsByQuizId successfully");
                 return Ok(questions); // Return the questions
             }
             catch (NoQuestionsAvailableException e)
             {
                 errorMessage = e.Message;
             }
-
+            _logger.LogError("No questions found in the given quiz");
             return NotFound($"No questions found for Quiz ID {quizId}." + errorMessage); // Return error response
         }
 
@@ -113,8 +117,11 @@ namespace QuizApp.Controllers
             var result = _questionService.RemoveFromQuiz(quizid, questionid);
 
             if (result)
+            {
+                _logger.LogInformation("Deleted the Questions successfully");
                 return Ok("Deleted Question Successfully"); // Return success response
-
+            }
+            _logger.LogError("Couldn't delete the question from the required quiz");
             return BadRequest("Could not remove the Question from quiz"); // Return error response
         }
     }

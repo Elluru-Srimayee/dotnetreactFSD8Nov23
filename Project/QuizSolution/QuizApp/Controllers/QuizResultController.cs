@@ -16,7 +16,7 @@ namespace QuizApp.Controllers
         private readonly ILogger _logger;
 
         // Inject the quiz result service through constructor injection
-        public QuizResultController(IQuizResultService quizResultService, ILogger<QuizController> logger)
+        public QuizResultController(IQuizResultService quizResultService, ILogger<QuizResultController> logger)
         {
             _quizResultService = quizResultService;
             _logger = logger;
