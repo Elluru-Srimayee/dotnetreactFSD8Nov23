@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shopping_App.Exceptions;
@@ -10,6 +11,7 @@ namespace Shopping_App.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("reactApp")]
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
@@ -19,7 +21,6 @@ namespace Shopping_App.Controllers
             _logger = logger;
             _productService = productService;
         }
-        [Authorize]
         [HttpGet]
         public ActionResult Get()
         {
@@ -36,7 +37,7 @@ namespace Shopping_App.Controllers
             }
             return BadRequest(errorMessage);
         }
-        [Authorize(Roles = "Admin")]
+        
         [HttpPost]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(Product),StatusCodes.Status200OK)]

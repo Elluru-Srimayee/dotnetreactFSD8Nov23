@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using QuizApp.Exceptions;
 using QuizApp.Interfaces;
@@ -10,6 +11,7 @@ namespace QuizApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("reactApp")]
     public class QuizResultController : ControllerBase
     {
         private readonly IQuizResultService _quizResultService;
