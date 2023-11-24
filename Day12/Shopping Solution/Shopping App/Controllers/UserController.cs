@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shopping_App.Interfaces;
 using Shopping_App.Models.DTOs;
 
 namespace Shopping_App.Controllers
 {
+    
     public class UserController : Controller
     {
         private readonly IUserService _userService;
@@ -17,7 +19,7 @@ namespace Shopping_App.Controllers
         {
             return View();
         }
-        [HttpPost]
+        [HttpPost("Register")]
         public IActionResult Register(UserDTO viewModel)
         {
             try
@@ -40,11 +42,8 @@ namespace Shopping_App.Controllers
 
             return View();
         }
-        public IActionResult Login()
-        {
-            return View();
-        }
-        [HttpPost]
+        
+        [HttpPost("Login")]
         public IActionResult Login(UserDTO userDTO)
         {
             var result = _userService.Login(userDTO);

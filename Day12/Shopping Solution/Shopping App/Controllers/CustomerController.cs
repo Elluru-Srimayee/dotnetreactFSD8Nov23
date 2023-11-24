@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shopping_App.Interfaces;
 using Shopping_App.Models.DTOs;
@@ -6,6 +7,7 @@ namespace Shopping_App.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("reactApp")]
     public class CustomerController : ControllerBase
     {
         private readonly IUserService _userService;
