@@ -9,28 +9,17 @@ function RegisterUser(){
     const [repassword,setrePassword] = useState("");
     const [role,setRole] = useState("");
     var [usernameError,setUsernameError]=useState("");
-    var [passwordError,setPasswordError]=useState("");
-    var[repasswordError,setRepasswordError]=useState("");
-    var[roleError,setRoleError]=useState("");
     var checkUSerData = ()=>{
         if(username=='')
         {
             setUsernameError("Username cannot be empty");
             return false;
         }
-        else {
-            setUsernameError("");
-        }
-        if(password==''){
-            setPasswordError("Password cannot be empty");
+           
+        if(password=='')
             return false;
-        }
-        else {
-            setPasswordError(""); // Clear the error message
-        }
-        if(role=='select'){
+        if(role=='Select Role')
             return false;
-        }
         return true;
     }
     const signUp = (event)=>{
@@ -38,17 +27,19 @@ function RegisterUser(){
         var checkData = checkUSerData();
         if(checkData==false)
         {
-            alert('please check your data')
+            alert('please check yor data')
             return;
         }
         
-        axios.post("http://localhost:5237/api/Customer/register",{
+        axios.post("http://localhost:5237/api/Customer/login",{
             username: username,
             role:	role,
             password:password
     })
         .then((userData)=>{
-            console.log(userData)
+            var token = userData.data.token;
+            localStorage.setItem("token",token);
+
         })
         .catch((err)=>{
             console.log(err)
@@ -64,7 +55,6 @@ function RegisterUser(){
             <label className="form-control">Password</label>
             <input type="password" className="form-control" value={password}
                     onChange={(e)=>{setPassword(e.target.value)}}/>
-            <label className="alert alert-danger">{passwordError}</label>
             <label className="form-control">Re-Type Password</label>
             <input type="text" className="form-control" value={repassword}
                     onChange={(e)=>{setrePassword(e.target.value)}}/>
