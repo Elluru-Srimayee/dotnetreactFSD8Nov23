@@ -48,6 +48,23 @@ namespace QuizApp.Controllers
             _logger.LogError("Failed to get the quizs");
             return BadRequest(errorMessage); // Return error response
         }
+        [HttpGet("categories")]
+        public ActionResult<string> GetCategories()
+        {
+            string errorMessage = string.Empty;
+            try
+            {
+                var result = _quizService.GetCategories();
+                _logger.LogInformation("Received list of category");
+                return Ok(result);
+            }
+            catch(Exception e)
+            {
+                errorMessage = e.Message;
+            }
+            _logger.LogError("Failed to get the category List");
+            return BadRequest(errorMessage);
+        }
 
         // Endpoint to create a new quiz
         [Authorize(Roles = "Creator")]

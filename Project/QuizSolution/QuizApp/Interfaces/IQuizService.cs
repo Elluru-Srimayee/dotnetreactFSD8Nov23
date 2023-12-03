@@ -11,6 +11,7 @@ namespace QuizApp.Interfaces
         Task<Quiz> GetQuizByIdWithQuestions(int id);
         List<Quiz> GetQuizzesByCategory(string category);
         bool DeleteQuizIfNoQuestions(int quizId);
+        List<string> GetCategories();
         Quiz UpdateQuiz(Quiz updatedQuiz);
         //public Quiz StartQuiz(int quizId);
     }
